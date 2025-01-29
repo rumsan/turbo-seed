@@ -271,6 +271,22 @@ importers:
         specifier: latest
         version: 5.7.3
 
+  packages/subgraph:
+    dependencies:
+      '@urql/core':
+        specifier: ^5.1.0
+        version: 5.1.0(graphql@16.10.0)
+      graphql:
+        specifier: ^16.0.0
+        version: 16.10.0
+    devDependencies:
+      '@workspace/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      typescript:
+        specifier: ^5.0.0
+        version: 5.7.3
+
   packages/types: {}
 
   packages/typescript-config: {}
@@ -340,6 +356,14 @@ importers:
         version: 5.7.3
 
 packages:
+
+  '@0no-co/graphql.web@1.0.13':
+    resolution: {integrity: sha512-jqYxOevheVTU1S36ZdzAkJIdvRp2m3OYIG5SEoKDw5NI8eVwkoI0D/Q3DYNGmXCxkA6CQuoa7zvMiDPTLqUNuw==}
+    peerDependencies:
+      graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
+    peerDependenciesMeta:
+      graphql:
+        optional: true
 
   '@adraffy/ens-normalize@1.10.1':
     resolution: {integrity: sha512-96Z2IP3mYmF1Xg2cDm8f1gWGf/HUVedQ3FMifV4kG/PQ4yEP51xDtRAEfhVNt5f/uzpNkZHwWQuUcu6D6K+Ekw==}
@@ -1845,6 +1869,9 @@ packages:
   '@typescript-eslint/visitor-keys@8.22.0':
     resolution: {integrity: sha512-AWpYAXnUgvLNabGTy3uBylkgZoosva/miNd1I8Bz3SjotmQPbVqhO4Cczo8AsZ44XVErEBPr/CRSgaj8sG7g0w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@urql/core@5.1.0':
+    resolution: {integrity: sha512-yC3sw8yqjbX45GbXxfiBY8GLYCiyW/hLBbQF9l3TJrv4ro00Y0ChkKaD9I2KntRxAVm9IYBqh0awX8fwWAe/Yw==}
 
   '@webassemblyjs/ast@1.14.1':
     resolution: {integrity: sha512-nuBEDgQfm1ccRp/8bCQrx1frohyufl4JlbMMZ4P1wpeOfDhF6FQkxZJ1b/e+PLwr6X1Nhw6OLme5usuBWYBvuQ==}
@@ -6357,6 +6384,9 @@ packages:
     resolution: {integrity: sha512-DLiFIXYC5fMPxaRg832S6F5mJYvePtmO5G9v9IgUFPhXm9/GkXarH/TUrBAVzhTCzAj9anE/+GjrgXp/54nOgw==}
     engines: {node: '>= 12.0.0'}
 
+  wonka@6.3.4:
+    resolution: {integrity: sha512-CjpbqNtBGNAeyNS/9W6q3kSkKE52+FjIj7AkFlLr11s/VWGUu6a2CdYSdGxocIhIVjaW/zchesBQUKPVU69Cqg==}
+
   word-wrap@1.2.5:
     resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
@@ -6461,6 +6491,10 @@ packages:
     resolution: {integrity: sha512-muH7gBL9sI1nciMZV67X5fTKKBLtwpZ5VBp1vsOQzj1MhrBZ4wlVCm3gedKZWLp0Oyel8sIGfeiz54Su+OVT+A==}
 
 snapshots:
+
+  '@0no-co/graphql.web@1.0.13(graphql@16.10.0)':
+    optionalDependencies:
+      graphql: 16.10.0
 
   '@adraffy/ens-normalize@1.10.1': {}
 
@@ -8395,6 +8429,13 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 8.22.0
       eslint-visitor-keys: 4.2.0
+
+  '@urql/core@5.1.0(graphql@16.10.0)':
+    dependencies:
+      '@0no-co/graphql.web': 1.0.13(graphql@16.10.0)
+      wonka: 6.3.4
+    transitivePeerDependencies:
+      - graphql
 
   '@webassemblyjs/ast@1.14.1':
     dependencies:
@@ -13853,6 +13894,8 @@ snapshots:
       stack-trace: 0.0.10
       triple-beam: 1.4.1
       winston-transport: 4.9.0
+
+  wonka@6.3.4: {}
 
   word-wrap@1.2.5: {}
 
