@@ -36,7 +36,7 @@ update_subgraph() {
   
 
     # Update the address and startBlock for accessManagerV2
-    sed -i "s/address: .*/address: \"$NEW_ACCESS_MANAGER_ADDRESS\"/g" $YAML_FILE
+    # sed -i "s/address: .*/address: \"$NEW_ACCESS_MANAGER_ADDRESS\"/g" $YAML_FILE
   
  
     

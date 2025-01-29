@@ -1,16 +1,16 @@
-# node banners/virtuperks.js
+node banners/virtuperks.js
 
-# pnpm i
+pnpm i
 
 source ./utils.sh
 
-# start_docker
+start_docker
 
-# deploy_contract
+deploy_contract
 
-update_subgraph
+# update_subgraph
 
-# deploy_subgraph
+deploy_subgraph
 
-# node banners/success.js
+node banners/success.js
 
