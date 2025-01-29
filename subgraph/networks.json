@@ -1,0 +1,8 @@
+{
+  "mainnet": {
+    "AccessManager": {
+      "address": "0x50D75C1BC6a1cE35002C9f92D0AF4B3684aa6B74",
+      "startBlock": 371
+    }
+  }
+}

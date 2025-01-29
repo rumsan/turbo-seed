@@ -14,5 +14,9 @@
   "devDependencies": {
     "typescript": "^5.0.0",
     "@workspace/typescript-config": "workspace:*"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
   }
 }

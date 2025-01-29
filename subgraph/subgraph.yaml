@@ -1,0 +1,35 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: AccessManager
+    network: mainnet
+    source:
+      address: "0x50D75C1BC6a1cE35002C9f92D0AF4B3684aa6B74"
+      abi: AccessManager
+      startBlock: 371
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AppCreated
+        - OwnershipTransferred
+        - RoleGranted
+        - RoleRevoked
+      abis:
+        - name: AccessManager
+          file: ./abis/AccessManager.json
+      eventHandlers:
+        - event: AppCreated(indexed bytes32,indexed address)
+          handler: handleAppCreated
+        - event: OwnershipTransferred(indexed bytes32,indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: RoleGranted(bytes32,indexed bytes32,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(bytes32,indexed bytes32,indexed address)
+          handler: handleRoleRevoked
+      file: ./src/access-manager.ts

@@ -179,6 +179,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@workspace/subgraph':
+        specifier: workspace:*
+        version: link:../../packages/subgraph
       '@workspace/ui':
         specifier: workspace:*
         version: link:../../packages/ui
