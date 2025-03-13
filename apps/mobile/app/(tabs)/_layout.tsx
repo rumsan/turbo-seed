@@ -32,7 +32,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="house.fill" color={color} />
+            <IconSymbol size={24} name="house.fill" color={color} />
           ),
         }}
       />
@@ -41,7 +41,7 @@ export default function TabLayout() {
         options={{
           title: 'Scanner',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="qrcode" color={color} />
+            <IconSymbol size={24} name="qrcode" color={color} />
           ),
         }}
       />
@@ -50,7 +50,7 @@ export default function TabLayout() {
         options={{
           title: 'Location',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="location.fill" color={color} />
+            <IconSymbol size={24} name="location.fill" color={color} />
           ),
         }}
       />
@@ -59,7 +59,7 @@ export default function TabLayout() {
         options={{
           title: 'Explore',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="paperplane.fill" color={color} />
+            <IconSymbol size={24} name="paperplane.fill" color={color} />
           ),
         }}
       />

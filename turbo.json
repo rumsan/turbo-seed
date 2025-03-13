@@ -5,7 +5,7 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]
@@ -13,7 +13,15 @@
     "check-types": {
       "dependsOn": ["^check-types"]
     },
+    "prisma:generate": {
+      "cache": false,
+      "persistent": false,
+      "inputs": ["prisma/schema.prisma"],
+      "outputs": ["node_modules/.prisma/client"]
+    },
     "dev": {
+      "dependsOn": ["^api#prisma:generate"],
+      "inputs": [".env*"],
       "cache": false,
       "persistent": true
     }
