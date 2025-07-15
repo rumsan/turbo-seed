@@ -6,11 +6,41 @@
 
 generator client {
   provider = "prisma-client-js"
+  output = "../client"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model Project {
+  id          Int           @id @default(autoincrement())
+  uuid        String        @unique @default(uuid()) @db.Uuid()
+  name        String
+  description String?
+  status      ProjectStatus @default(PENDING)
+  extras      Json
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt()
+}
+
+enum ProjectStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  REJECTED
+}
+
+model User {
+  id          Int           @id @default(autoincrement())
+  uuid        String        @unique @default(uuid()) @db.Uuid()
+  name        String
+  phone       String
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt()
 }
 
 // ++++++++++++++++++ START: @rumsan/extensions/settings +++++++++++++++++++++++++++
