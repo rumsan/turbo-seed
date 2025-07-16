@@ -32,17 +32,39 @@
     "check-types": {
       "dependsOn": ["^check-types"]
     },
-    "prisma:generate": {
+    "prisma:generate:rahat": {
       "cache": false,
       "persistent": false,
       "inputs": ["packages/rahat-prisma/prisma/schema.prisma"],
       "outputs": ["packages/rahat-prisma/node_modules/.prisma/client"]
     },
+    "prisma:generate:cva": {
+      "cache": false,
+      "persistent": false,
+      "inputs": ["packages/cva-prisma/prisma/schema.prisma"],
+      "outputs": ["packages/cva-prisma/node_modules/.prisma/client"]
+    },
+    "prisma:generate": {
+      "dependsOn": ["prisma:generate:rahat", "prisma:generate:cva"],
+      "cache": false
+    },
     "dev": {
-      "dependsOn": ["^api#prisma:generate"],
-      "inputs": [".env*"],
+      "dependsOn": ["^build", "api:dev", "api-cva:dev"],
+      "inputs": [".env*", "src/**"],
       "cache": false,
       "persistent": true
+    },
+    "api:dev": {
+      "cache": false,
+      "persistent": true,
+      "inputs": ["apps/api/src/**", "apps/api/.env*"],
+      "outputs": ["apps/api/dist/**"]
+    },
+    "api-cva:dev": {
+      "cache": false,
+      "persistent": true,
+      "inputs": ["apps/api-cva/src/**", "apps/api-cva/.env*"],
+      "outputs": ["apps/api-cva/dist/**"]
     }
   }
 }

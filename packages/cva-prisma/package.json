@@ -1,0 +1,65 @@
+{
+  "name": "@rumsan/cva-prisma",
+  "version": "0.0.6",
+  "description": "Rumsan CVA Prisma with Prisma Client for interfacing with Rumsan applications",
+  "author": "Rumsan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rumsan/turbo-seed",
+    "directory": "packages/rumsan-user"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "private": true,
+  "scripts": {
+    "build": "tsup",
+    "build:pkg": "tsup",
+    "clean": "rm -rf dist node_modules client .prisma",
+    "lint": "echo \"Skipping lint for now\" && exit 0",
+    "test": "echo \"No tests specified\" && exit 0",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:studio": "prisma studio"
+  },
+  "peerDependencies": {
+    "@prisma/client": "^6.10.1"
+  },
+  "devDependencies": {
+    "@prisma/client": "^6.10.1",
+    "prisma": "^6.10.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/client/index.d.ts",
+      "import": "./dist/client/index.js",
+      "require": "./dist/client/index.js"
+    },
+    "./client/*": {
+      "types": "./dist/client/*.d.ts",
+      "import": "./dist/client/*.js",
+      "require": "./dist/client/*.js"
+    }
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.0.1",
+    "@nestjs/core": "^11.0.1",
+    "@nestjs/mapped-types": "^2.1.0",
+    "@nestjs/swagger": "^11.2.0",
+    "class-validator": "^0.14.2",
+    "swagger-ui-express": "^5.0.1"
+  }
+}

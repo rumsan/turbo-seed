@@ -2,19 +2,18 @@
   "name": "rumsan-monorepo",
   "version": "0.0.2",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "api:dev": "pnpm --filter @rumsan/api dev",
+    "cva:dev": "pnpm --filter @rumsan/api-cva dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "ui": "pnpm --filter @rumsan/shadcn-ui ui",
     "gui": "pnpm --filter mobile gui",
-    "prisma:generate": "pnpm --filter api prisma:generate",
-    "clean": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'dist' -exec rm -rf '{}' + && find . -name '.next' -exec rm -rf '{}' + && find . -name '.turbo' -exec rm -rf '{}' +",
+    "prisma:generate:rahat": "pnpm --filter @rahat/prisma prisma:generate",
+    "prisma:generate:cva": "pnpm --filter @rumsan/cva-prisma prisma:generate",
+    "clean": "find  . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && find . -name 'dist' -exec rm -rf '{}' + && find . -name '.next' -exec rm -rf '{}' + && find . -name '.turbo' -exec rm -rf '{}' +",
     "publish-packages": "turbo run build lint && changeset version && changeset publish"
   },
   "devDependencies": {

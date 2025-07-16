@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { EventEmitterModule } from '@nestjs/event-emitter';
-import { DemoModule } from 'src/demo/demo.module';
-import { ProjectModule } from 'src/project/project.module';
+import { DemoModule } from 'demo/demo.module';
+import { ProjectModule } from 'project/project.module';
 import { ListenerModule } from '../listeners/listener.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
