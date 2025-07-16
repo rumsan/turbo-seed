@@ -2,10 +2,29 @@
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
   "tasks": {
+    "clean": {
+      "dependsOn": ["^clean"],
+      "cache": false,
+      "persistent": true
+    },
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+    },
+    "@rumsan/user#build": {
+      "dependsOn": ["@rumsan/sdk#build", "^build"]
+    },
+    "build:watch": {
+      "dependsOn": ["^build:watch"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+    },
+    "build:pkg": {
+      "dependsOn": ["^build:pkg"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["dist/**"],
+      "cache": false
     },
     "lint": {
       "dependsOn": ["^lint"]
@@ -13,17 +32,39 @@
     "check-types": {
       "dependsOn": ["^check-types"]
     },
-    "prisma:generate": {
+    "prisma:generate:rahat": {
       "cache": false,
       "persistent": false,
-      "inputs": ["prisma/schema.prisma"],
-      "outputs": ["node_modules/.prisma/client"]
+      "inputs": ["packages/rahat-prisma/prisma/schema.prisma"],
+      "outputs": ["packages/rahat-prisma/node_modules/.prisma/client"]
+    },
+    "prisma:generate:cva": {
+      "cache": false,
+      "persistent": false,
+      "inputs": ["packages/cva-prisma/prisma/schema.prisma"],
+      "outputs": ["packages/cva-prisma/node_modules/.prisma/client"]
+    },
+    "prisma:generate": {
+      "dependsOn": ["prisma:generate:rahat", "prisma:generate:cva"],
+      "cache": false
     },
     "dev": {
-      "dependsOn": ["^api#prisma:generate"],
-      "inputs": [".env*"],
+      "dependsOn": ["^build", "api:dev", "api-cva:dev"],
+      "inputs": [".env*", "src/**"],
       "cache": false,
       "persistent": true
+    },
+    "api:dev": {
+      "cache": false,
+      "persistent": true,
+      "inputs": ["apps/api/src/**", "apps/api/.env*"],
+      "outputs": ["apps/api/dist/**"]
+    },
+    "api-cva:dev": {
+      "cache": false,
+      "persistent": true,
+      "inputs": ["apps/api-cva/src/**", "apps/api-cva/.env*"],
+      "outputs": ["apps/api-cva/dist/**"]
     }
   }
 }

@@ -1,11 +1,7 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
+// This is your CVA Prisma schema file
 generator client {
   provider = "prisma-client-js"
+  output   = "../client"
 }
 
 datasource db {
@@ -13,8 +9,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// ++++++++++++++++++ START: @rumsan/extensions/settings +++++++++++++++++++++++++++
+// Add your CVA-specific models here
+model Beneficiary {
+  id        Int       @id @default(autoincrement())
+  uuid      String    @unique @default(uuid()) @db.Uuid()
+  name      String
+  phone     String
+  address   String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt()
+}
 
+// You might want to reuse the Setting model from the other schema
 model Setting {
   name           String          @id @unique
   value          Json
@@ -32,5 +38,3 @@ enum SettingDataType {
   BOOLEAN
   OBJECT
 }
-
-// ++++++++++++++++++ END: @rumsan/extensions/settings +++++++++++++++++++++++++++
