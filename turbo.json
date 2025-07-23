@@ -20,10 +20,10 @@
       "outputs": ["node_modules/.prisma/client"]
     },
     "dev": {
-      "dependsOn": ["^api#prisma:generate"],
-      "inputs": [".env*"],
+      "dependsOn": ["^build"],
+      "inputs": [".env*", "src/**"],
       "cache": false,
-      "persistent": true
+      "persistent": false
     }
   }
 }
