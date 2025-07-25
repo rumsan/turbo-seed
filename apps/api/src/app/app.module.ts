@@ -1,23 +1,27 @@
-import {Module} from '@nestjs/common';
-import {ConfigModule} from '@nestjs/config';
-import {EventEmitterModule} from '@nestjs/event-emitter';
-import {DemoModule} from 'src/demo/demo.module';
-import {ListenerModule} from '../listeners/listener.module';
-import {AppController} from './app.controller';
-import {AppService} from './app.service';
-import {WebSocketService} from './websocket.service';
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { EventEmitterModule } from '@nestjs/event-emitter';
+import { DemoModule } from 'src/demo/demo.module';
+import { PrismaModule, PrismaService } from 'src/prisma';
+import { UserModule } from 'src/user/user.module';
+import { ListenerModule } from '../listeners/listener.module';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { WebSocketService } from './websocket.service';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({isGlobal: true}),
+    ConfigModule.forRoot({ isGlobal: true }),
     EventEmitterModule.forRoot({
       maxListeners: 10,
       ignoreErrors: false,
     }),
+    PrismaModule.forRoot(),
     DemoModule,
     ListenerModule,
+    UserModule,
   ],
   controllers: [AppController],
-  providers: [AppService, WebSocketService],
+  providers: [AppService, WebSocketService, PrismaService],
 })
 export class AppModule {}
