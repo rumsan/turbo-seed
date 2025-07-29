@@ -1,12 +1,11 @@
+import { HapticTab } from '@/components/HapticTab';
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import { TabBarBackground } from '@/components/ui/TabBarBackground';
+import Colors from '@/constants/Colors';
+import { useColorScheme } from '@/hooks/useColorScheme';
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { Platform } from 'react-native';
-
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -23,12 +22,14 @@ export default function TabLayout() {
             // Use a transparent background on iOS to show the blur effect
             position: 'absolute',
           },
-          default: {},
+          default: {
+            position: 'relative',
+          },
         }),
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => (
@@ -37,27 +38,18 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="camera"
+        name="alert"
         options={{
-          title: 'Scanner',
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={24} name="qrcode" color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="location"
-        options={{
-          title: 'Location',
+          title: 'Alert',
           tabBarIcon: ({ color }) => (
             <IconSymbol size={24} name="location.fill" color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="notification"
         options={{
-          title: 'Explore',
+          title: 'Notification',
           tabBarIcon: ({ color }) => (
             <IconSymbol size={24} name="paperplane.fill" color={color} />
           ),
