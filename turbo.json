@@ -24,7 +24,7 @@
       "cache": false
     },
     "dev": {
-      "dependsOn": ["prisma:generate"],
+      "dependsOn": ["^build"],
       "inputs": [".env*"],
       "cache": false,
       "persistent": true
