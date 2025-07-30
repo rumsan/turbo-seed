@@ -1,7 +1,5 @@
-import LandingScreen from '@/screens/setup';
+import AlertDashboard from '@/screens/alert/dashboard';
 
 export default function LandingPage() {
-  // Simply redirect to the tabs route
-  //return <Redirect href="/(tabs)/home" />;
-  return <LandingScreen />;
+  return <AlertDashboard />;
 }

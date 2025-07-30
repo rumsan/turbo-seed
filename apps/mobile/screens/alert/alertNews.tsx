@@ -1,7 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import {
-  SafeAreaView,
   StatusBar,
   StyleSheet,
   Text,
@@ -11,7 +10,7 @@ import {
 
 const AlertNewsScreen = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#f5f5f5" />
 
       {/* Header */}
@@ -67,7 +66,7 @@ const AlertNewsScreen = () => {
       <View style={styles.footer}>
         <Text style={styles.footerText}>Powered by Rumsan</Text>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -75,6 +74,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f5f5f5',
+    paddingTop: 50, // Add top padding for status bar
+    paddingBottom: 90, // Add bottom padding for tab bar
   },
   header: {
     flexDirection: 'row',
