@@ -1,16 +1,16 @@
 'use client';
 
-import {useWebSocketEvent} from '@/hooks/ws-event.hook';
-import {usePing} from '@/queries/demo.query';
-import {Alert, AlertDescription} from '@rumsan/shadcn-ui/components/alert';
-import {Button} from '@rumsan/shadcn-ui/components/button';
-import {EVENTS} from '@workspace/sdk/constants/events';
+import { useWebSocketEvent } from '@/hooks/ws-event.hook';
+import { usePing } from '@/queries/demo.query';
+import { Alert, AlertDescription } from '@rumsan/shadcn-ui/components/alert';
+import { Button } from '@rumsan/shadcn-ui/components/button';
+import { EVENTS } from '@workspace/sdk/constants/events';
 
-import {useState} from 'react';
+import { useState } from 'react';
 
 export default function Page() {
-  const [wsResponse, setWsResponse] = useState();
-  const {data, refetch, isFetching} = usePing();
+  const [wsResponse, setWsResponse] = useState<any>();
+  const { data, refetch, isFetching } = usePing();
   useWebSocketEvent(EVENTS.DEMO.PONG, (data) => {
     setWsResponse(data);
   });
@@ -23,12 +23,12 @@ export default function Page() {
         </Button>
         <Alert variant="default">
           <AlertDescription>
-            <pre>{data && <p>{JSON.stringify(data)}</p>}</pre>
+            <pre>{data ? <p>{JSON.stringify(data)}</p> : null}</pre>
           </AlertDescription>
         </Alert>
         <Alert variant="destructive">
           <AlertDescription>
-            <pre>{wsResponse && <p>{JSON.stringify(wsResponse)}</p>}</pre>
+            <pre>{wsResponse ? <p>{JSON.stringify(wsResponse)}</p> : null}</pre>
           </AlertDescription>
         </Alert>
       </div>

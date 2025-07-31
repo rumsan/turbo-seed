@@ -13,14 +13,18 @@
     "check-types": {
       "dependsOn": ["^check-types"]
     },
-    "prisma:generate": {
+    "prisma:generate:rahat": {
       "cache": false,
       "persistent": false,
-      "inputs": ["prisma/schema.prisma"],
-      "outputs": ["node_modules/.prisma/client"]
+      "inputs": ["packages/database/prisma/schema.prisma"],
+      "outputs": ["packages/database/client"]
+    },
+    "prisma:generate": {
+      "dependsOn": ["prisma:generate:rahat"],
+      "cache": false
     },
     "dev": {
-      "dependsOn": ["^api#prisma:generate"],
+      "dependsOn": ["^build"],
       "inputs": [".env*"],
       "cache": false,
       "persistent": true
