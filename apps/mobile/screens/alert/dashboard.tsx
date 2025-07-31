@@ -99,7 +99,7 @@ const AlertDashboard = () => {
   ];
 
   const handleCreateReceipt = () => {
-    router.push('/alert/sendAlert');
+    router.push('/(tabs)/alert/sendAlert');
   };
 
   const ServiceCard = ({

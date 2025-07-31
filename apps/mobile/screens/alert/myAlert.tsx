@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import BottomText from './bottomText';
 
 interface AlertItem {
   id: string;
@@ -143,9 +144,7 @@ const MyAlerts = () => {
         </View>
 
         {/* Footer */}
-        <View style={styles.footer}>
-          <Text style={styles.footerText}>Powered by Rumsan</Text>
-        </View>
+        <BottomText />
       </ScrollView>
     </View>
   );
@@ -275,14 +274,6 @@ const styles = StyleSheet.create({
     marginBottom: 2,
   },
   timeText: {
-    fontSize: 12,
-    color: '#9CA3AF',
-  },
-  footer: {
-    alignItems: 'center',
-    paddingVertical: 24,
-  },
-  footerText: {
     fontSize: 12,
     color: '#9CA3AF',
   },
