@@ -1,12 +1,12 @@
 'use client';
 
-import {CONFIG} from '@/lib/config';
-import {RumsanProvider, useRumsanAppStore} from '@rumsan/react-query';
-import {QueryClient} from '@tanstack/react-query';
-import {ApiClient} from '@workspace/sdk/clients/index';
-import {ThemeProvider as NextThemesProvider} from 'next-themes';
+import { CONFIG } from '@/lib/config';
+import { RumsanProvider, useRumsanAppStore } from '@rumsan/react-query';
+import { QueryClient } from '@tanstack/react-query';
+import { ApiClient } from '@workspace/sdk/clients/index';
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import * as React from 'react';
-import {WebSocketProvider} from './websocket.provider';
+import { WebSocketProvider } from './websocket.provider';
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,8 +24,8 @@ export const apiClient = new ApiClient({
   baseURL: CONFIG.API_URL,
 });
 
-export function Providers({children}: {children: React.ReactNode}) {
-  const {isInitialized, initialize} = useRumsanAppStore();
+export function Providers({ children }: { children: React.ReactNode }) {
+  const { isInitialized, initialize } = useRumsanAppStore();
 
   React.useEffect(() => {
     if (!isInitialized) {
@@ -44,7 +44,7 @@ export function Providers({children}: {children: React.ReactNode}) {
       enableColorScheme
     >
       <WebSocketProvider url={CONFIG.WS.URL}>
-        <RumsanProvider rumsanClient={apiClient} queryClient={queryClient}>
+        <RumsanProvider rumsanClient={apiClient}>
           {children}
         </RumsanProvider>
       </WebSocketProvider>
