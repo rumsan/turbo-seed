@@ -12,6 +12,12 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "target": "ES2022",
+    "lib": [
+      "ES2022"
+    ],
+    "types": [
+      "node"
+    ],
     "skipLibCheck": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
@@ -19,10 +25,17 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false
   },
-  "include": ["src/**/*.ts", "prisma/**/*.ts"],
-  "exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
+  "include": [
+    "src/**/*.ts",
+    "prisma/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "test",
+    "dist",
+    "**/*spec.ts"
+  ]
 }
-
 // {
 //   "extends": "@repo/typescript-config/base.json",
 //   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "tsup.config.ts"],

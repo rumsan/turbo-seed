@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsup src/index.ts",
+    "build": "rm -rf dist && rm -rf ./prisma/generated && prisma generate && node scripts/combine-schemas.js && tsc",
+    "build-ol": "tsup src/index.ts",
     "build:pkg": "tsup",
     "clean": "rm -rf dist node_modules client .prisma",
     "lint": "echo \"Skipping lint for now\" && exit 0",
@@ -18,9 +19,11 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/adapter-pg": "^6.12.0",
-    "@prisma/client": "^6.2.1"
+    "@prisma/client": "^6.13.0"
   },
   "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.8.3",
     "prisma": "^6.12.0",
     "tsup": "^8.5.0"
   },
